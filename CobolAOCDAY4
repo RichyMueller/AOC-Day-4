@@ -1,0 +1,40 @@
+ 01 ADVENT-OF-CODE.                                    
+    05 AOC-COUNTER          PIC 9(6).                  
+    05 AOC-CANDIDAT         PIC 9(6)        VALUE 0.   
+                                                       
+ 01 AOC        REDEFINES    ADVENT-OF-CODE.            
+    05 S1                   PIC 9(1).                  
+    05 S2                   PIC 9(1).                  
+    05 S3                   PIC 9(1).                  
+    05 S4                   PIC 9(1).                  
+    05 S5                   PIC 9(1).                  
+    05 S6                   PIC 9(1).                  
+    
+        MOVE 256310        TO  AOC-COUNTER                           
+      MOVE      0        TO  AOC-CANDIDAT                          
+                                                                   
+      PERFORM UNTIL AOC-COUNTER > 732736                           
+                                                                   
+         EVALUATE TRUE                                             
+ *    A PAIR IN MY NUMBER ?                                        
+            WHEN S1 = S2                                           
+            WHEN S2 = S3                                           
+            WHEN S3 = S4                                           
+            WHEN S4 = S5                                           
+            WHEN S5 = S6                                           
+ *    DIGITS INCREASING OR CONSTANT ?                              
+              IF S6 >= S5 AND                                      
+                 S5 >= S4 AND                                      
+                 S4 >= S3 AND                                      
+                 S3 >= S2 AND                                      
+                 S2 >= S1                                          
+                   ADD 1 TO AOC-CANDIDAT                           
+                   DISPLAY MY-SERVICE-NAME ' C : ' AOC-COUNTER     
+              END-IF                                               
+            WHEN OTHER                                             
+              CONTINUE                                             
+         END-EVALUATE                                              
+         ADD 1 TO AOC-COUNTER                                      
+      END-PERFORM                                                  
+                                                                   
+      DISPLAY MY-SERVICE-NAME  ' CANDIDAT: ' AOC-CANDIDAT            
